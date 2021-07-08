@@ -106,8 +106,12 @@ div#driver-popover-item {
   }
 
   .driver-popover-footer {
-    display: block;
+    // display: block;
     margin-top: 10px;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
 
     button {
       display: inline-block;
@@ -164,16 +168,16 @@ div#driver-popover-item {
   }
 }
 
-.driver-clearfix:before {
-  content: "";
-  display: table;
-}
+// .driver-clearfix:before {
+//   content: "";
+//   display: table;
+// }
 
-.driver-clearfix:after {
-  clear: both;
-  content: "";
-  display: table;
-}
+// .driver-clearfix:after {
+//   clear: both;
+//   content: "";
+//   display: table;
+// }
 
 .driver-stage-no-animation {
   transition: none !important;

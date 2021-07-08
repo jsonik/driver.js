@@ -1,4 +1,3 @@
-import Element from './element';
 import {
   CLASS_BTN_DISABLED,
   CLASS_CLOSE_BTN,
@@ -9,10 +8,12 @@ import {
   CLASS_POPOVER_TIP,
   CLASS_POPOVER_TITLE,
   CLASS_PREV_STEP_BTN,
+  CLASS_STEP_INFO,
   ID_POPOVER,
   POPOVER_HTML,
 } from '../common/constants';
 import { createNodeFromString } from '../common/utils';
+import Element from './element';
 
 /**
  * Popover that is displayed on top of the highlighted element
@@ -66,6 +67,7 @@ export default class Popover extends Element {
     this.nextBtnNode = popover.querySelector(`.${CLASS_NEXT_STEP_BTN}`);
     this.prevBtnNode = popover.querySelector(`.${CLASS_PREV_STEP_BTN}`);
     this.closeBtnNode = popover.querySelector(`.${CLASS_CLOSE_BTN}`);
+    this.stepInfoNode = popover.querySelector(`.${CLASS_STEP_INFO}`);
   }
 
   /**
@@ -84,6 +86,15 @@ export default class Popover extends Element {
    */
   getDescriptionNode() {
     return this.descriptionNode;
+  }
+
+  /**
+   * Gets the step info node for the popover
+   * @returns {Element | null | *}
+   * @public
+   */
+  getStepInfoNode() {
+    return this.stepInfoNode;
   }
 
   /**
@@ -230,6 +241,8 @@ export default class Popover extends Element {
     } else {
       this.nextBtnNode.innerHTML = this.options.nextBtnText;
     }
+
+    this.stepInfoNode.innerHTML = `${this.options.currentIndex + 1}/${this.options.totalCount}`;
   }
 
   /**
@@ -280,7 +293,7 @@ export default class Popover extends Element {
     const popoverHeight = popoverDimensions.height;
     const popoverCenter = popoverHeight / 2;
 
-    const popoverMargin = this.options.padding + 10;  // adding 10 to give it a little distance from the element
+    const popoverMargin = this.options.padding - 10;// TODO: + 10;  // adding 10 to give it a little distance from the element
     const elementCenter = (elementPosition.bottom - elementPosition.top) / 2;
     const topCenterPosition = (elementPosition.top - popoverCenter) + elementCenter + this.options.offset;
 
@@ -298,7 +311,7 @@ export default class Popover extends Element {
    * @private
    */
   positionOnRight(elementPosition) {
-    const popoverMargin = this.options.padding + 10;  // adding 10 to give it a little distance from the element
+    const popoverMargin = this.options.padding - 10;// TODO: + 10;  // adding 10 to give it a little distance from the element
 
     this.node.style.left = `${elementPosition.right + popoverMargin}px`;
     this.node.style.top = `${(elementPosition.top + this.options.offset) - this.options.padding}px`;
