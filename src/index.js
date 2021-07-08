@@ -15,6 +15,7 @@ import {
   SHOULD_OUTSIDE_CLICK_CLOSE,
   SHOULD_OUTSIDE_CLICK_NEXT,
   ALLOW_KEYBOARD_CONTROL,
+  POPOVER_MARGIN,
 } from './common/constants';
 import Stage from './core/stage';
 import { isDomElement } from './common/utils';
@@ -31,6 +32,7 @@ export default class Driver {
       animate: SHOULD_ANIMATE_OVERLAY, // Whether to animate or not
       opacity: OVERLAY_OPACITY,    // Overlay opacity
       padding: OVERLAY_PADDING,    // Spacing around the element from the overlay
+      popoverMargin: POPOVER_MARGIN,
       scrollIntoViewOptions: null, // Options to be passed to `scrollIntoView`
       allowClose: SHOULD_OUTSIDE_CLICK_CLOSE,      // Whether to close overlay on click outside the element
       keyboardControl: ALLOW_KEYBOARD_CONTROL,     // Whether to allow controlling through keyboard or not
